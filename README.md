@@ -4,7 +4,7 @@ A personal knowledge base for anything worth remembering — organised your way.
 
 ## How it works
 
-Notes are stored as Markdown files, each covering a single topic. You decide which topic folders to create. The note's structural type (`concept`, `procedure`, `troubleshooting`, `decision`, or `reference`) is tracked in the file itself, not in the folder name.
+Notes are stored as Markdown files, each covering a single topic. You decide which topic folders to create.
 
 ### Example folder layouts
 
@@ -25,7 +25,7 @@ What matters is that notes live in **exactly one topic subfolder** — not at th
 
 All notes MUST conform to [`schemas/note-schema.md`](schemas/note-schema.md). That file is the single source of truth for:
 
-- The five structural note types and what they are for
+- Note types and when to use each
 - Required and optional frontmatter fields
 - Exact section structures per type
 - File naming rules
@@ -35,7 +35,7 @@ All notes MUST conform to [`schemas/note-schema.md`](schemas/note-schema.md). Th
 
 Skills are stored in [`.claude/skills/`](.claude/skills/) and are auto-invoked by GitHub Copilot and Claude based on what you ask. No manual reference needed.
 
-When you ask the AI to create a note, it will suggest a topic folder and structural type — you can correct either before the file is written.
+When you ask the AI to create a note, it will suggest a topic folder and note type — you can correct either before the file is written.
 
 | Skill                                                    | Triggers                                         | Purpose                                             |
 | -------------------------------------------------------- | ------------------------------------------------ | --------------------------------------------------- |
