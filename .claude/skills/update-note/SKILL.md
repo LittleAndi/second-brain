@@ -123,6 +123,13 @@ complexity: <low | medium | high>
 ## Related
 ```
 
+### File Naming Rules
+
+- MUST use kebab-case
+- MUST be descriptive and unambiguous
+- MUST be specific enough to identify the note without opening it
+- MUST NOT use generic names (`notes.md`, `todo.md`, `misc.md`)
+
 ### Content Constraints
 
 - Target word count: 200–500 words

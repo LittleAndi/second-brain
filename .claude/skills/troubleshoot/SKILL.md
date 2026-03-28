@@ -61,9 +61,9 @@ last_updated: <YYYY-MM-DD>
 Field rules:
 
 - `title`: Human-readable, sentence-case, no trailing punctuation
-- `tags`: MUST be lowercase; MUST use kebab-case for multi-word tags
+- `tags`: MUST be lowercase; MUST use kebab-case for multi-word tags; MUST include at least one descriptive tag
 - `summary`: One sentence describing the problem; max 160 characters
-- `status`: `draft` while content is being developed; `stable` once verified
+- `status`: `draft` while content is being developed; `stable` once verified; `deprecated` when superseded
 - `last_updated`: ISO 8601 date in `YYYY-MM-DD` format
 
 ### Section Schema: troubleshooting
