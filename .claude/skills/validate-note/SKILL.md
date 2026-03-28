@@ -14,7 +14,7 @@ description: >
 
 1. Use the validation checklist defined in the `## Validation Checklist` section below.
 2. Read the note file to be validated.
-3. Check each rule in the validation checklist from the schema.
+3. Check the note against each rule in the validation checklist.
 4. Report the result.
 
 ## Validation Checklist
