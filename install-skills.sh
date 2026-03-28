@@ -6,6 +6,7 @@ SKILLS_TARGET="$HOME/.claude/skills"
 
 mkdir -p "$SKILLS_TARGET"
 
+shopt -s nullglob
 for skill in "$SKILLS_SOURCE"/*/; do
     name="$(basename "$skill")"
     target="$SKILLS_TARGET/$name"
