@@ -25,13 +25,17 @@ Format: `<type>: <short description>`
 **Atomicity rule:** Every commit MUST touch exactly one note file. If multiple notes changed,
 they require separate commits.
 
-**Description format:** `<kebab-slug-of-note-title> <note-type>`
+**Description format:** `<short description of the change>`
+
+The description should be concise and human-readable. For `add`, `update`, `deprecate`, and `remove`,
+it is conventional to append the note's structural type for clarity. For `fix`, describe what was
+corrected rather than just naming the file.
 
 Examples:
 
 ```
 add: sourdough-starter-feeding-schedule procedure
-fix: knee-pain-after-long-run troubleshooting
+fix: incorrect cause in knee-pain-after-long-run
 update: home-budget-2026 reference
 deprecate: old-deployment-process procedure
 remove: outdated-api-keys reference
@@ -51,11 +55,12 @@ Triggered when the user describes what they just did (e.g., "I added a note abou
    - Extended, amended, or enriched → `update`
    - Marked `status: deprecated` → `deprecate`
    - File deleted → `remove`
-3. Derive the kebab-case slug from the note's `title` frontmatter field.
-4. Identify the note's structural `type` from its frontmatter (concept, procedure,
-   troubleshooting, decision, reference).
-5. Output the suggested commit message as a plain code block.
-6. Briefly explain the choice of `type` if it may not be obvious.
+3. Compose the description:
+   - For `fix`: write a short phrase describing what was corrected (e.g., `incorrect cause in <note-slug>`).
+   - For all other types: use the kebab-case slug of the note title, optionally followed by the
+     note's structural type (e.g., `sourdough-starter-feeding-schedule procedure`).
+4. Output the suggested commit message as a plain code block.
+5. Briefly explain the choice of `type` if it may not be obvious.
 
 ### Mode B — Validate a proposed commit message
 
@@ -65,8 +70,7 @@ Triggered when the user provides a commit message and asks if it is correct.
 2. Check each rule:
    - [ ] `type` is one of: `add`, `fix`, `update`, `deprecate`, `remove`
    - [ ] Format matches `<type>: <description>` (colon + space separator)
-   - [ ] Description is lowercase and uses kebab-case slug
-   - [ ] Description ends with the note's structural type word
+   - [ ] Description is lowercase
    - [ ] No scope in parentheses (this repo does not use scopes)
 3. If all checks pass: confirm with **PASS** and a brief affirmation.
 4. If any check fails: report **FAIL**, list each violated rule, and output a corrected
@@ -78,8 +82,6 @@ The output MUST:
 
 - Present the suggested or corrected message in a fenced code block
 - Use only lowercase in the message
-- End the description with the structural note type (concept, procedure, troubleshooting,
-  decision, or reference)
 - Be concise — no more than a short paragraph of explanation alongside the code block
 
 The output MUST NOT:
