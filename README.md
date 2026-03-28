@@ -45,6 +45,24 @@ When you ask the AI to create a note, it will suggest a topic folder and note ty
 | [`troubleshoot`](.claude/skills/troubleshoot/SKILL.md)   | "I have a problem with X", "why does Y not work" | Triage a problem and produce a troubleshooting note |
 | [`validate-note`](.claude/skills/validate-note/SKILL.md) | "check this note", "validate X"                  | Verify a note conforms to the schema                |
 
+## Installing Skills Globally
+
+To make the skills available in all Claude Code and GitHub Copilot workspaces, link each skill into your user-level `~/.claude/skills/` directory.
+
+**Windows (PowerShell):**
+
+```powershell
+.\install-skills.ps1
+```
+
+**Linux / macOS:**
+
+```bash
+chmod +x install-skills.sh && ./install-skills.sh
+```
+
+Each script creates a link (junction on Windows, symlink on Linux/macOS) per skill, so any other skills you already have in `~/.claude/skills/` are left untouched. Re-run after adding new skills to this repo.
+
 ## Commit Message Convention
 
 ```text
