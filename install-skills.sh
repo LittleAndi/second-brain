@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SKILLS_SOURCE="$(cd "$(dirname "$0")/.claude/skills" && pwd)"
+REPO_ROOT="$(cd "$(dirname "$0")" && pwd)"
+SKILLS_SOURCE="$REPO_ROOT/.claude/skills"
 SKILLS_TARGET="$HOME/.claude/skills"
+SCHEMA_SOURCE="$REPO_ROOT/schemas"
+SCHEMA_TARGET="$HOME/.claude/schemas"
 
 mkdir -p "$SKILLS_TARGET"
 
@@ -24,3 +27,17 @@ for skill in "$SKILLS_SOURCE"/*/; do
         echo "Linked $name"
     fi
 done
+
+if [ -e "$SCHEMA_TARGET" ] || [ -L "$SCHEMA_TARGET" ]; then
+    if [ -L "$SCHEMA_TARGET" ] && [ ! -e "$SCHEMA_TARGET" ]; then
+        echo "Fixing broken symlink for schemas at $SCHEMA_TARGET"
+        rm "$SCHEMA_TARGET"
+        ln -s "$SCHEMA_SOURCE" "$SCHEMA_TARGET"
+        echo "Relinked schemas"
+    else
+        echo "Skipping schemas — already exists at $SCHEMA_TARGET"
+    fi
+else
+    ln -s "$SCHEMA_SOURCE" "$SCHEMA_TARGET"
+    echo "Linked schemas"
+fi
