@@ -1,7 +1,7 @@
 ---
 name: validate-note
 description: >
-  Check a knowledge base note against schemas/note-schema.md and report all violations.
+  Check a knowledge base note against the note schema and report all violations.
   Use this skill when the user wants to verify a note is conformant before marking it stable,
   after editing a note manually, or when reviewing contributed content.
   USE FOR: "is this note correct", "check this note", "does this follow the schema",
@@ -12,9 +12,9 @@ description: >
 
 ## Workflow
 
-1. Read `schemas/note-schema.md` to load the current authoritative validation rules.
+1. Use the validation checklist defined in the `## Validation Checklist` section below.
 2. Read the note file to be validated.
-3. Check each rule in the validation checklist from the schema.
+3. Check the note against each rule in the validation checklist.
 4. Report the result.
 
 ## Validation Checklist

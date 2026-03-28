@@ -12,7 +12,7 @@ description: >
 
 ## Workflow
 
-1. Read `schemas/note-schema.md` to load the current authoritative schema for type `troubleshooting`.
+1. Use the schema defined in the `## Schema` section below.
 2. Collect the following from the user's input:
    - Exact error message or observable symptom
    - The setting, context, or environment where the problem occurs (app, appliance, activity, process, etc.)
@@ -42,3 +42,54 @@ The output MUST NOT:
 - Invent a cause or solution not supported by the input
 - Use vague language in `## Solution` — each step must be actionable
 - Omit `## Prevention`
+
+## Schema
+
+### Required Frontmatter Fields
+
+```yaml
+---
+title: <string>
+type: troubleshooting
+tags: [<string>, ...]
+summary: <string>
+status: <draft | stable | deprecated>
+last_updated: <YYYY-MM-DD>
+---
+```
+
+Field rules:
+
+- `title`: Human-readable, sentence-case, no trailing punctuation
+- `tags`: MUST be lowercase; MUST use kebab-case for multi-word tags; MUST include at least one descriptive tag
+- `summary`: One sentence describing the problem; max 160 characters
+- `status`: `draft` while content is being developed; `stable` once verified; `deprecated` when superseded
+- `last_updated`: ISO 8601 date in `YYYY-MM-DD` format
+
+### Section Schema: troubleshooting
+
+```markdown
+## Problem
+
+Exact error message or observable symptom. Quote error messages verbatim.
+
+## Context
+
+The environment, service, or workflow where the problem occurs.
+
+## Cause
+
+Root cause. Explain why the problem happens, not just what triggers it.
+
+## Solution
+
+Numbered steps to resolve the problem. Each step must be actionable.
+
+## Prevention
+
+How to avoid this problem in future. Reference configuration or process changes.
+
+## Related
+
+- <file-name-without-extension>
+```
