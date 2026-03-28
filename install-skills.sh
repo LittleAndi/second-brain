@@ -9,8 +9,15 @@ mkdir -p "$SKILLS_TARGET"
 for skill in "$SKILLS_SOURCE"/*/; do
     name="$(basename "$skill")"
     target="$SKILLS_TARGET/$name"
-    if [ -e "$target" ]; then
-        echo "Skipping $name — already exists at $target"
+    if [ -e "$target" ] || [ -L "$target" ]; then
+        if [ -L "$target" ] && [ ! -e "$target" ]; then
+            echo "Fixing broken symlink for $name at $target"
+            rm "$target"
+            ln -s "$skill" "$target"
+            echo "Relinked $name"
+        else
+            echo "Skipping $name — already exists at $target"
+        fi
     else
         ln -s "$skill" "$target"
         echo "Linked $name"
