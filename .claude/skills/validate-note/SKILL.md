@@ -23,13 +23,13 @@ Check all of the following:
 
 - [ ] File has YAML frontmatter delimited by `---`
 - [ ] All required frontmatter fields are present: `title`, `type`, `tags`, `summary`, `status`, `last_updated`
-- [ ] `type` is one of: `concept`, `procedure`, `troubleshooting`, `decision`, `reference`
+- [ ] `type` is one of the five well-known values (`concept`, `procedure`, `troubleshooting`, `decision`, `reference`) **or** a descriptive kebab-case string for a custom type
 - [ ] File is stored in exactly one topic subfolder (one level deep from root, not at the root itself)
 - [ ] `tags` are lowercase and kebab-case
 - [ ] `summary` is a single sentence and max 160 characters
 - [ ] `status` is one of: `draft`, `stable`, `deprecated`
 - [ ] `last_updated` is in `YYYY-MM-DD` format
-- [ ] All section headings required by the declared type are present and match the schema exactly
+- [ ] All section headings required by the declared type are present and match the schema exactly; for custom types, `## Summary`, `## Details`, and `## Related` must be present
 - [ ] No section uses "see above", "as mentioned", or other relative references
 - [ ] File name is kebab-case and reflects the content subject
 - [ ] Word count is between 200 and 1000 words (excluding frontmatter)

@@ -4,7 +4,7 @@ type: reference
 tags: [meta, schema, validation]
 summary: Authoritative schema definition for all note types in this knowledge base. Single source of truth for humans, AI systems, and validation tooling.
 status: stable
-last_updated: 2026-03-27
+last_updated: 2026-03-29
 ---
 
 ## Purpose
@@ -13,7 +13,9 @@ This file is the **single source of truth** for all content authored in this rep
 
 ## Allowed Types
 
-Notes are categorised by **structural type**, which determines the required sections and is recorded in frontmatter. There are five types:
+Notes are categorised by **structural type**, which determines the required sections and is recorded in frontmatter.
+
+There are five **well-known types** with defined section schemas:
 
 | Type              | Purpose                                          |
 | ----------------- | ------------------------------------------------ |
@@ -22,6 +24,8 @@ Notes are categorised by **structural type**, which determines the required sect
 | `troubleshooting` | A specific problem and its resolution            |
 | `decision`        | A significant choice and the reasoning behind it |
 | `reference`       | External material or raw reference data          |
+
+In addition, **custom types** are allowed when none of the well-known types fit. A custom type is any descriptive kebab-case string (e.g. `journal`, `log`, `checklist`, `recipe`, `meeting-notes`). Custom types follow the **generic section schema** defined below.
 
 Notes are stored in **topic folders that you define** — for example `cooking/`, `fitness/`, `work/`, or `travel/`. The folder name reflects what the note is _about_. There is no fixed mapping between types and folders.
 
@@ -34,7 +38,7 @@ All notes MUST include these fields:
 ```yaml
 ---
 title: <string>
-type: <concept | procedure | troubleshooting | decision | reference>
+type: <concept | procedure | troubleshooting | decision | reference | custom-kebab-case-string>
 tags: [<string>, ...]
 summary: <string>
 status: <draft | stable | deprecated>
@@ -45,7 +49,7 @@ last_updated: <YYYY-MM-DD>
 Field rules:
 
 - `title`: Human-readable, sentence-case, no trailing punctuation
-- `type`: MUST be one of the five allowed values listed above
+- `type`: MUST be one of the five well-known values listed above OR any descriptive kebab-case string for a custom type
 - `tags`: MUST be lowercase; MUST use kebab-case for multi-word tags; MUST include at least one descriptive tag
 - `summary`: One sentence; MUST contain the key entity or error; max 160 characters
 - `status`: `draft` while content is being developed; `stable` once verified; `deprecated` when superseded
@@ -194,6 +198,26 @@ Context, caveats, or expiry considerations for this reference material.
 - <file-name-without-extension>
 ```
 
+### Custom types
+
+When none of the well-known types above fits, use a descriptive custom type. Custom-type notes follow the **generic section schema**:
+
+```markdown
+## Summary
+
+Short explanation (2–4 sentences). Must describe the note's subject explicitly.
+
+## Details
+
+The main content of the note. Structure this section with sub-headings or lists as needed.
+
+## Related
+
+- <file-name-without-extension>
+```
+
+Additional sections may be added freely between `## Details` and `## Related` when the content warrants it. The only requirement is that `## Summary`, `## Details`, and `## Related` are present.
+
 ## File Naming Rules
 
 - MUST use kebab-case
@@ -215,8 +239,9 @@ A file is valid when ALL of the following are true:
 
 - Has YAML frontmatter delimited by `---`
 - Contains all required frontmatter fields with correct types
+- `type` is one of the five well-known values (`concept`, `procedure`, `troubleshooting`, `decision`, `reference`) **or** a descriptive kebab-case string for a custom type
 - File is stored in exactly one topic subfolder (one level deep from root, not at the root itself)
-- Section headings match the schema for the declared type exactly
+- Section headings match the schema for the declared type (or the generic schema for custom types) exactly
 - File name is kebab-case and reflects the content subject
 - Word count is between 200 and 1000 words
 - No section contains "see above" or other relative references
