@@ -34,7 +34,7 @@ In addition, **custom types** are allowed when none of the well-known types fit.
 
 Formally, custom types MUST match this regular expression (anchors included): `/^[a-z0-9]+(?:-[a-z0-9]+)*$/`.
 
-Examples of valid custom types include: `journal`, `log`, `checklist`, `recipe`, `meeting-notes`.
+Examples of valid custom types include: `journal`, `log`, `checklist`, `meeting-notes`.
 
 Custom types follow the **generic section schema** defined below.
 
