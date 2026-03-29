@@ -29,7 +29,7 @@ Check all of the following:
 - [ ] `summary` is a single sentence and max 160 characters
 - [ ] `status` is one of: `draft`, `stable`, `deprecated`
 - [ ] `last_updated` is in `YYYY-MM-DD` format
-- [ ] All section headings required by the declared type are present and match the schema exactly; for custom types, `## Summary`, `## Details`, and `## Related` must be present
+- [ ] All section headings required by the declared type are present; for well-known types they match the schema exactly, and for custom types `## Summary`, `## Details`, zero or more additional sections, and `## Related` appear in that order (extra sections are only allowed between Details and Related)
 - [ ] No section uses "see above", "as mentioned", or other relative references
 - [ ] File name is kebab-case and reflects the content subject
 - [ ] Word count is between 200 and 1000 words (excluding frontmatter)
