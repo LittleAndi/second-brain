@@ -19,7 +19,7 @@ description: >
    - Step-by-step instructions / recipe / process → `procedure`
    - A significant choice and the reasoning behind it → `decision`
    - External material, links, raw data, or reference text → `reference`
-   - Anything that does not clearly fit one of the above → use a descriptive custom type (e.g. `journal`, `log`, `checklist`, `recipe`, `meeting-notes`)
+   - Anything that does not clearly fit one of the above → use a descriptive custom type (e.g. `journal`, `log`, `checklist`, `meeting-notes`)
 3. Choose an appropriate topic folder based on what the note is about. Examples:
    - Food, cooking, recipes → `cooking/`
    - Exercise, sport, health → `fitness/` or `health/`
@@ -71,7 +71,7 @@ The five **well-known types** have defined section schemas:
 | `decision`        | A significant choice and the reasoning behind it |
 | `reference`       | External material or raw reference data          |
 
-Any other descriptive kebab-case string (e.g. `journal`, `log`, `checklist`, `recipe`, `meeting-notes`) is a **custom type**. Custom types use the generic section schema.
+Any other descriptive kebab-case string (e.g. `journal`, `log`, `checklist`, `meeting-notes`) is a **custom type**. Custom types use the generic section schema.
 
 ### Required Frontmatter Fields
 
@@ -157,7 +157,7 @@ complexity: <low | medium | high>
 ## Related
 ```
 
-#### Custom types
+#### custom
 
 ```markdown
 ## Summary

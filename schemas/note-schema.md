@@ -25,7 +25,18 @@ There are five **well-known types** with defined section schemas:
 | `decision`        | A significant choice and the reasoning behind it |
 | `reference`       | External material or raw reference data          |
 
-In addition, **custom types** are allowed when none of the well-known types fit. A custom type is any descriptive kebab-case string (e.g. `journal`, `log`, `checklist`, `recipe`, `meeting-notes`). Custom types follow the **generic section schema** defined below.
+In addition, **custom types** are allowed when none of the well-known types fit. A custom type is any descriptive *kebab-case* string that matches all of the following rules:
+
+- Only lowercase letters `a-z`, digits `0-9`, and hyphens `-` are allowed.
+- The value MUST start and end with a letter or digit (no leading or trailing hyphen).
+- Hyphens MUST separate non-empty segments (no consecutive `--`).
+- A single segment without hyphens is allowed (e.g. `journal`).
+
+Formally, custom types MUST match this regular expression (anchors included): `/^[a-z0-9]+(?:-[a-z0-9]+)*$/`.
+
+Examples of valid custom types include: `journal`, `log`, `checklist`, `recipe`, `meeting-notes`.
+
+Custom types follow the **generic section schema** defined below.
 
 Notes are stored in **topic folders that you define** — for example `cooking/`, `fitness/`, `work/`, or `travel/`. The folder name reflects what the note is _about_. There is no fixed mapping between types and folders.
 
@@ -198,7 +209,7 @@ Context, caveats, or expiry considerations for this reference material.
 - <file-name-without-extension>
 ```
 
-### Custom types
+### custom
 
 When none of the well-known types above fits, use a descriptive custom type. Custom-type notes follow the **generic section schema**:
 
@@ -241,7 +252,7 @@ A file is valid when ALL of the following are true:
 - Contains all required frontmatter fields with correct types
 - `type` is one of the five well-known values (`concept`, `procedure`, `troubleshooting`, `decision`, `reference`) **or** a descriptive kebab-case string for a custom type
 - File is stored in exactly one topic subfolder (one level deep from root, not at the root itself)
-- Section headings match the schema for the declared type (or the generic schema for custom types) exactly
+- Section headings include all required sections for the declared type (or the generic schema for custom types), in the required order; for custom types, additional sections between `## Details` and `## Related` are allowed as described above
 - File name is kebab-case and reflects the content subject
 - Word count is between 200 and 1000 words
 - No section contains "see above" or other relative references
