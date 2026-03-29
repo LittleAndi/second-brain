@@ -252,7 +252,7 @@ A file is valid when ALL of the following are true:
 - Contains all required frontmatter fields with correct types
 - `type` is one of the five well-known values (`concept`, `procedure`, `troubleshooting`, `decision`, `reference`) **or** a descriptive kebab-case string for a custom type
 - File is stored in exactly one topic subfolder (one level deep from root, not at the root itself)
-- Section headings include all required sections for the declared type (or the generic schema for custom types), in the required order; for custom types, additional sections between `## Details` and `## Related` are allowed as described above
+- Section headings for well-known types match their section schema **exactly** (no extra or missing sections) and appear in the required order; for custom types, section headings follow the generic schema, and additional sections between `## Details` and `## Related` are allowed as described above
 - File name is kebab-case and reflects the content subject
 - Word count is between 200 and 1000 words
 - No section contains "see above" or other relative references
