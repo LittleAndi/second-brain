@@ -44,7 +44,7 @@ The output MUST NOT:
 ```yaml
 ---
 title: <string>
-type: <concept | procedure | troubleshooting | decision | reference>
+type: <concept | procedure | troubleshooting | decision | reference | custom-kebab-case-string>
 tags: [<string>, ...]
 summary: <string>
 status: <draft | stable | deprecated>
@@ -55,7 +55,7 @@ last_updated: <YYYY-MM-DD>
 Field rules:
 
 - `title`: Human-readable, sentence-case, no trailing punctuation
-- `type`: MUST be one of the five allowed values listed above
+- `type`: MUST be one of the five well-known values listed above OR any descriptive kebab-case string for a custom type
 - `tags`: MUST be lowercase; MUST use kebab-case for multi-word tags; MUST include at least one descriptive tag
 - `summary`: One sentence; MUST contain the key entity or error; max 160 characters
 - `status`: `draft` while content is being developed; `stable` once verified; `deprecated` when superseded
@@ -122,6 +122,16 @@ complexity: <low | medium | high>
 ## Notes
 ## Related
 ```
+
+#### Custom types
+
+```markdown
+## Summary
+## Details
+## Related
+```
+
+Additional sections may be present between `## Details` and `## Related` for custom types.
 
 ### File Naming Rules
 

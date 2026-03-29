@@ -19,6 +19,7 @@ description: >
    - Step-by-step instructions / recipe / process → `procedure`
    - A significant choice and the reasoning behind it → `decision`
    - External material, links, raw data, or reference text → `reference`
+   - Anything that does not clearly fit one of the above → use a descriptive custom type (e.g. `journal`, `log`, `checklist`, `recipe`, `meeting-notes`)
 3. Choose an appropriate topic folder based on what the note is about. Examples:
    - Food, cooking, recipes → `cooking/`
    - Exercise, sport, health → `fitness/` or `health/`
@@ -60,6 +61,8 @@ The output MUST NOT:
 
 ### Allowed Types
 
+The five **well-known types** have defined section schemas:
+
 | Type              | Purpose                                          |
 | ----------------- | ------------------------------------------------ |
 | `concept`         | Definitions and explanations of a single idea    |
@@ -68,12 +71,14 @@ The output MUST NOT:
 | `decision`        | A significant choice and the reasoning behind it |
 | `reference`       | External material or raw reference data          |
 
+Any other descriptive kebab-case string (e.g. `journal`, `log`, `checklist`, `recipe`, `meeting-notes`) is a **custom type**. Custom types use the generic section schema.
+
 ### Required Frontmatter Fields
 
 ```yaml
 ---
 title: <string>
-type: <concept | procedure | troubleshooting | decision | reference>
+type: <concept | procedure | troubleshooting | decision | reference | custom-kebab-case-string>
 tags: [<string>, ...]
 summary: <string>
 status: <draft | stable | deprecated>
@@ -84,7 +89,7 @@ last_updated: <YYYY-MM-DD>
 Field rules:
 
 - `title`: Human-readable, sentence-case, no trailing punctuation
-- `type`: MUST be one of the five allowed values listed above
+- `type`: MUST be one of the five well-known values listed above OR any descriptive kebab-case string for a custom type
 - `tags`: MUST be lowercase; MUST use kebab-case for multi-word tags; MUST include at least one descriptive tag
 - `summary`: One sentence; MUST contain the key entity or error; max 160 characters
 - `status`: `draft` while content is being developed; `stable` once verified; `deprecated` when superseded
@@ -151,6 +156,16 @@ complexity: <low | medium | high>
 ## Notes
 ## Related
 ```
+
+#### Custom types
+
+```markdown
+## Summary
+## Details
+## Related
+```
+
+Additional sections may be inserted between `## Details` and `## Related` when the content warrants it.
 
 ### File Naming Rules
 
